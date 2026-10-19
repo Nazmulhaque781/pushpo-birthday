@@ -45,11 +45,34 @@ const memories = [
 
 const Memories = ({ onNext }) => {
   return (
-    <section className="min-h-screen relative overflow-hidden px-5 py-16 bg-gradient-to-b from-[#090611] via-[#12091f] to-[#090611]">
-      {/* Background glow */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-pink-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <section className="memories-page min-h-screen relative overflow-hidden px-5 py-16">
+      {/* =========================================
+          BACKGROUND IMAGE
+      ========================================== */}
+      <div
+        className="memories-bg"
+        style={{
+          backgroundImage: "url('/photos/memories-bg.png')",
+        }}
+      />
 
-      <div className="relative max-w-6xl mx-auto">
+      {/* Dark Overlay */}
+      <div className="memories-bg-overlay" />
+
+      {/* Soft Animated Background Glow */}
+      <div className="memories-page-glow memories-page-glow-1" />
+      <div className="memories-page-glow memories-page-glow-2" />
+
+      {/* Background Sparkles */}
+      <span className="memories-sparkle memories-sparkle-1">✦</span>
+      <span className="memories-sparkle memories-sparkle-2">✧</span>
+      <span className="memories-sparkle memories-sparkle-3">✦</span>
+      <span className="memories-sparkle memories-sparkle-4">✧</span>
+
+      {/* =========================================
+          MAIN CONTENT
+      ========================================== */}
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-14 page-enter">
           <div className="text-5xl mb-5 float">📸</div>
@@ -64,12 +87,14 @@ const Memories = ({ onNext }) => {
             Moments
           </h2>
 
-          <p className="text-gray-400 mt-5 max-w-md mx-auto leading-7">
+          <p className="text-gray-300 mt-5 max-w-md mx-auto leading-7">
             Just a few pictures that I thought deserved a little place here. 🌸
           </p>
         </div>
 
-        {/* Photo Gallery */}
+        {/* =========================================
+            PHOTO GALLERY
+        ========================================== */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-7 md:gap-10 max-w-5xl mx-auto">
           {memories.map((memory) => (
             <div
@@ -88,10 +113,10 @@ const Memories = ({ onNext }) => {
                     className="w-full h-full object-cover memory-image"
                   />
 
-                  {/* Soft overlay */}
+                  {/* Soft Photo Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Number */}
+                  {/* Photo Number */}
                   <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     <span className="text-[10px] text-white/80">
                       {String(memory.id).padStart(2, "0")}
@@ -110,19 +135,115 @@ const Memories = ({ onNext }) => {
           ))}
         </div>
 
-        {/* Bottom message */}
+        {/* =========================================
+            PERSONAL NOTE
+        ========================================== */}
+        <div className="gallery-note-wrapper mt-20">
+          {/* Background Glow */}
+          <div className="gallery-note-glow" />
+
+          <div className="gallery-note-card">
+            {/* Decorative Quote */}
+            <span className="gallery-big-quote">“</span>
+
+            {/* Small Heading */}
+            <div className="gallery-note-heading">
+              <span className="gallery-heading-line" />
+
+              <p>A SMALL THOUGHT</p>
+
+              <span className="gallery-heading-line" />
+            </div>
+
+            {/* Animated Flower */}
+            <div className="gallery-note-flower-wrap">
+              <span className="gallery-flower-glow" />
+              <span className="gallery-main-flower">🌸</span>
+            </div>
+
+            {/* Message */}
+            <div className="gallery-message">
+              {/* Line 1 */}
+              <p className="gallery-line gallery-line-1">
+                I don't know if I've ever told you this,
+                <br className="hidden md:block" />
+                but I really like your{" "}
+                <span className="gallery-special-text">pictures.</span>
+              </p>
+
+              {/* Line 2 */}
+              <p className="gallery-line gallery-line-2">
+                Somehow, whenever I see one, I end up looking at it
+                <br className="hidden md:block" />
+                <span className="gallery-highlight">
+                  {" "}
+                  a little longer than I probably should.
+                </span>{" "}
+                😅
+              </p>
+
+              {/* Line 3 */}
+              <p className="gallery-line gallery-line-3">
+                Maybe it's your smile,
+                <br className="md:hidden" /> maybe it's the way you look in
+                them...
+              </p>
+
+              {/* Line 4 */}
+              <p className="gallery-line gallery-line-4">
+                or maybe it's{" "}
+                <span className="gallery-special-text">just you</span>
+                <br className="hidden md:block" /> that makes every picture feel{" "}
+                <span className="gallery-highlight">
+                  a little more special.
+                </span>{" "}
+                🌸
+              </p>
+
+              {/* Middle Decoration */}
+              <div className="gallery-middle-decoration">
+                <span />
+                <span>✦</span>
+                <span />
+              </div>
+
+              {/* Final Message */}
+              <p className="gallery-line gallery-line-5 gallery-final-message">
+                And honestly, choosing only a few for this page
+                <br className="hidden md:block" /> was harder than I expected.{" "}
+                <span>🤍</span>
+              </p>
+            </div>
+
+            {/* Bottom Decoration */}
+            <div className="gallery-note-ending">
+              <span className="gallery-ending-dot" />
+              <span className="gallery-ending-star">✦</span>
+              <span className="gallery-ending-dot" />
+            </div>
+          </div>
+        </div>
+
+        {/* =========================================
+            NEXT BUTTON
+        ========================================== */}
         <div className="text-center mt-14">
           <div className="flex items-center justify-center gap-4 mb-7">
             <div className="w-16 h-[1px] bg-pink-300/20" />
+
             <span className="text-pink-300/60">✦</span>
+
             <div className="w-16 h-[1px] bg-pink-300/20" />
           </div>
 
-          <button onClick={onNext} className="memory-next-button">
-            <span>Keep going...</span>
-            <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
+          <button onClick={onNext} className="memory-next-button group">
+            <span className="memory-button-shine" />
+
+            <span className="memory-button-star">✦</span>
+
+            <span className="memory-button-text">A little more awaits</span>
+
+            <span className="memory-button-arrow">❯</span>
           </button>
         </div>
       </div>

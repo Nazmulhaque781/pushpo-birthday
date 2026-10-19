@@ -1,70 +1,211 @@
 const things = [
   {
+    id: 1,
     emoji: "🌸",
-    title: "Your Smile",
-    text: "There's something about your smile that can make an ordinary moment feel a little better.",
+    mini: "MAYBE YOU NEVER NOTICED",
+    title: "That Little Smile",
+    text: "There are smiles that look nice in a picture, and then there are smiles that somehow change the whole mood of a moment. Yours has always felt a little more like the second one.",
   },
   {
+    id: 2,
     emoji: "✨",
+    mini: "THE LITTLE THINGS",
     title: "The Way You Are",
-    text: "You have your own way of being yourself, and somehow that's one of the nicest things about you.",
+    text: "It's funny how the smallest things can make someone memorable—the way you talk, the way you react, the random little expressions you make. I think those are the things people remember without even realizing it.",
   },
   {
+    id: 3,
     emoji: "🤍",
+    mini: "A THOUGHT I NEVER SAID",
     title: "Your Presence",
-    text: "Sometimes a person's presence is enough to make a moment feel different. You're one of those people.",
+    text: "Some people are around, and that's all it is. But sometimes someone's presence makes an ordinary moment feel different. I've noticed that about you more than once.",
   },
   {
+    id: 4,
     emoji: "🌷",
-    title: "Simply, You",
-    text: "I don't think everything needs an explanation. Some people just become a little more special than the rest.",
+    mini: "THIS ONE IS HARD TO EXPLAIN",
+    title: "Why You Feel Different",
+    text: "I could probably list a hundred little reasons, but somehow none of them would explain it properly. Maybe that's the interesting part—some people don't become special because of one thing. They just slowly become impossible not to notice.",
   },
 ];
 
 const Special = ({ onNext }) => {
   return (
-    <section className="min-h-screen flex items-center px-5 py-10 bg-gradient-to-b from-[#090611] via-[#160b25] to-[#090611]">
-      <div className="max-w-5xl mx-auto w-full">
-        <div className="text-center mb-10">
-          <div className="text-5xl mb-4">🌷</div>
+    <section className="special-page relative min-h-screen overflow-hidden px-5 py-20">
+      {/* ========================================
+          BACKGROUND
+      ======================================== */}
 
-          <p className="text-pink-300 tracking-[4px] text-xs mb-3">
-            JUST A FEW THINGS
-          </p>
+      <div className="special-bg" />
 
-          <h2 className="text-3xl md:text-5xl font-bold">
-            About <span className="gradient-text">You</span>
+      <div className="special-overlay" />
+
+      {/* Soft background glows */}
+      <div className="special-glow special-glow-1" />
+      <div className="special-glow special-glow-2" />
+      <div className="special-glow special-glow-3" />
+
+      {/* Floating decorations */}
+      <span className="special-float special-float-1">🌸</span>
+      <span className="special-float special-float-2">✦</span>
+      <span className="special-float special-float-3">✧</span>
+      <span className="special-float special-float-4">🌷</span>
+      <span className="special-float special-float-5">♡</span>
+      <span className="special-float special-float-6">✦</span>
+
+      {/* Tiny background dots */}
+      <span className="special-dot special-dot-1" />
+      <span className="special-dot special-dot-2" />
+      <span className="special-dot special-dot-3" />
+      <span className="special-dot special-dot-4" />
+
+      {/* ========================================
+          MAIN CONTENT
+      ======================================== */}
+
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* ========================================
+            HEADER
+        ======================================== */}
+
+        <div className="special-header text-center">
+          <div className="special-flower-wrap">
+            <div className="special-flower-glow" />
+
+            <span className="special-flower-ring" />
+
+            <span className="special-main-flower">🌷</span>
+          </div>
+
+          <div className="special-label">
+            <span />
+            <p>JUST A FEW THINGS</p>
+            <span />
+          </div>
+
+          <h2 className="special-title">
+            About <span>You</span>
           </h2>
 
-          <p className="text-gray-400 mt-3">
-            Things you probably don't even realize.
+          <p className="special-subtitle">
+            Some things are easier to notice
+            <br className="hidden md:block" />
+            when you're looking from a little distance.
           </p>
+
+          <div className="special-divider">
+            <span />
+            <b>✦</b>
+            <span />
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {things.map((item) => (
+        {/* ========================================
+            CARDS
+        ======================================== */}
+
+        <div className="special-cards">
+          {things.map((thing, index) => (
             <div
-              key={item.title}
-              className="glass rounded-3xl p-6 hover:-translate-y-1
-              hover:scale-[1.01] transition duration-300"
+              key={thing.id}
+              className={`special-card special-card-${index + 1}`}
             >
-              <div className="text-3xl mb-4">{item.emoji}</div>
+              {/* Card glow */}
+              <div className="special-card-glow" />
 
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              {/* Top shine */}
+              <div className="special-card-shine" />
 
-              <p className="text-gray-400 leading-7">{item.text}</p>
+              {/* Number */}
+              <div className="special-number">0{thing.id}</div>
+
+              {/* Emoji */}
+              <div className="special-icon-wrap">
+                <div className="special-icon-ring" />
+
+                <div className="special-icon">{thing.emoji}</div>
+              </div>
+
+              {/* Card Content */}
+              <div className="special-card-content">
+                <p className="special-card-mini">{thing.mini}</p>
+
+                <h3>{thing.title}</h3>
+
+                <div className="special-card-line">
+                  <span />
+                  <i>✦</i>
+                  <span />
+                </div>
+
+                <p className="special-card-text">{thing.text}</p>
+              </div>
+
+              {/* Corner decoration */}
+              <div className="special-card-corner">✧</div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
-          <button
-            onClick={onNext}
-            className="glass px-8 py-3 rounded-full
-            hover:scale-105 transition duration-300 cursor-pointer"
-          >
-            There's something for you... 💌
-          </button>
+        {/* ========================================
+            LITTLE THOUGHT
+        ======================================== */}
+
+        <div className="special-thought">
+          <div className="special-thought-line">
+            <span />
+            <span>✦</span>
+            <span />
+          </div>
+
+          <p>
+            Maybe you never really notice
+            <span> the little things </span>
+            that make you... you.
+          </p>
+
+          <div className="special-thought-flower">🌸</div>
+        </div>
+
+        {/* ========================================
+            ENDING CARD
+        ======================================== */}
+
+        <div className="special-ending">
+          <div className="special-ending-glow" />
+
+          <div className="special-ending-inner">
+            <div className="special-ending-icon">💌</div>
+
+            <p className="special-ending-small">AND MAYBE...</p>
+
+            <h3>
+              There's something
+              <span> I haven't said yet.</span>
+            </h3>
+
+            <p className="special-ending-text">
+              Some things are better saved for the right moment. 🌸
+            </p>
+
+            <div className="special-ending-divider">
+              <span />
+              <b>♡</b>
+              <span />
+            </div>
+
+            <button onClick={onNext} className="special-next-button group">
+              <span className="special-button-shine" />
+
+              <span className="special-button-icon">💌</span>
+
+              <span className="special-button-text">
+                There's something for you
+              </span>
+
+              <span className="special-button-arrow">→</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

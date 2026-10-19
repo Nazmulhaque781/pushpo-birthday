@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Opening from "./components/Opening";
 import Birthday from "./components/Birthday";
@@ -15,6 +15,11 @@ function App() {
   const nextPage = () => {
     setStep((currentStep) => currentStep + 1);
   };
+
+  // প্রতিটি নতুন page-এ ঢোকার সময় একদম উপরে নিয়ে যাবে
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -33,7 +38,7 @@ function App() {
 
         {step === 4 && <Letter onNext={nextPage} />}
 
-        {step === 5 && <FinalSurprise onRestart={() => setStep(0)} />}
+        {step === 5 && <FinalSurprise />}
       </div>
     </main>
   );
