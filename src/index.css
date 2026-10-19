@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ========================================
+   GLOBAL
+======================================== */
+
 html {
   scroll-behavior: smooth;
 }
@@ -17,6 +21,16 @@ body {
 * {
   box-sizing: border-box;
 }
+
+button {
+  font-family: inherit;
+}
+
+
+/* ========================================
+   COMMON
+======================================== */
+
 .glass {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -36,6 +50,11 @@ body {
   color: transparent;
 }
 
+
+/* ========================================
+   GENERAL FLOAT
+======================================== */
+
 @keyframes float {
   0%,
   100% {
@@ -50,6 +69,12 @@ body {
 .float {
   animation: float 3s ease-in-out infinite;
 }
+
+
+/* ========================================
+   LETTER
+======================================== */
+
 @keyframes letterOpen {
   from {
     opacity: 0;
@@ -65,6 +90,12 @@ body {
 .letter-open {
   animation: letterOpen 0.8s ease forwards;
 }
+
+
+/* ========================================
+   FINAL SURPRISE
+======================================== */
+
 @keyframes finalReveal {
   0% {
     opacity: 0;
@@ -84,6 +115,12 @@ body {
 .final-reveal {
   animation: finalReveal 1s ease forwards;
 }
+
+
+/* ========================================
+   PAGE TRANSITION
+======================================== */
+
 @keyframes pageEnter {
   from {
     opacity: 0;
@@ -99,6 +136,12 @@ body {
 .page-enter {
   animation: pageEnter 0.7s ease;
 }
+
+
+/* ========================================
+   FLOATING PETALS
+======================================== */
+
 .floating-petal {
   position: absolute;
   top: -40px;
@@ -133,20 +176,16 @@ body {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .floating-petal {
-    animation: none;
-    display: none;
-  }
-}
-/* ============================= */
-/* Memories Gallery              */
-/* ============================= */
+
+/* ========================================
+   MEMORIES GALLERY
+======================================== */
 
 .memory-card {
   position: relative;
   opacity: 0;
   animation: memoryAppear 0.9s ease forwards;
+
   transition:
     transform 0.5s ease,
     z-index 0.3s ease;
@@ -154,16 +193,22 @@ body {
 
 .memory-card-inner {
   position: relative;
+
   background: #f8f5f0;
+
   padding: 10px 10px 16px;
+
   border-radius: 4px;
+
   box-shadow:
     0 20px 45px rgba(0, 0, 0, 0.35),
     0 5px 15px rgba(0, 0, 0, 0.2);
+
   transition:
     transform 0.5s ease,
     box-shadow 0.5s ease;
 }
+
 
 /* Floating movement */
 
@@ -211,7 +256,11 @@ body {
 }
 
 .memory-card:hover .memory-card-inner {
-  transform: rotate(0deg) scale(1.08) translateY(-12px);
+  transform:
+    rotate(0deg)
+    scale(1.08)
+    translateY(-12px);
+
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.5),
     0 0 35px rgba(244, 114, 182, 0.12);
@@ -227,7 +276,7 @@ body {
 }
 
 
-/* Appear animation */
+/* Appear */
 
 @keyframes memoryAppear {
   0% {
@@ -245,7 +294,7 @@ body {
 }
 
 
-/* Floating animations */
+/* Floating */
 
 @keyframes memoryFloat1 {
   0%,
@@ -281,20 +330,29 @@ body {
 }
 
 
-/* Next button */
+/* Memory button */
 
 .memory-next-button {
   position: relative;
+
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
   padding: 13px 26px;
+
   border-radius: 999px;
+
   color: #e5e7eb;
+
   background: rgba(255, 255, 255, 0.06);
+
   border: 1px solid rgba(255, 255, 255, 0.12);
+
   backdrop-filter: blur(14px);
+
   cursor: pointer;
+
   transition:
     transform 0.3s ease,
     background 0.3s ease,
@@ -303,32 +361,1532 @@ body {
 
 .memory-next-button:hover {
   transform: scale(1.06);
+
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px rgba(244, 114, 182, 0.12);
+
+  box-shadow:
+    0 0 30px rgba(244, 114, 182, 0.12);
 }
 
 
-/* Mobile */
+/* ========================================
+   OPENING PAGE
+======================================== */
+
+.opening-section {
+  animation: openingFadeIn 1.2s ease forwards;
+}
+
+
+/* Background glow */
+
+.opening-glow {
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: rgba(236, 72, 153, 0.08);
+
+  filter: blur(100px);
+
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+
+/* Label */
+
+.opening-label {
+  opacity: 0;
+
+  animation: revealUp 1s ease forwards;
+
+  animation-delay: 0.3s;
+}
+
+.opening-line {
+  transform: scaleX(0);
+
+  animation: lineReveal 1s ease forwards;
+
+  animation-delay: 0.8s;
+}
+
+
+/* Flower */
+
+.opening-flower {
+  opacity: 0;
+
+  transform:
+    scale(0.5)
+    translateY(20px);
+
+  animation:
+    flowerReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    flowerFloat 4s ease-in-out infinite 1.8s;
+
+  animation-delay:
+    0.6s,
+    1.8s;
+}
+
+.flower-glow {
+  animation: flowerGlow 3s ease-in-out infinite;
+}
+
+.flower-ring {
+  opacity: 0;
+
+  transform: scale(0.5);
+
+  animation: ringReveal 1.2s ease forwards;
+
+  animation-delay: 1.1s;
+}
+
+
+/* Opening text */
+
+.opening-hey {
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  animation: revealUp 0.8s ease forwards;
+
+  animation-delay: 1.1s;
+}
+
+.opening-title {
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  animation:
+    titleReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  animation-delay: 1.35s;
+}
+
+.opening-divider {
+  opacity: 0;
+
+  transform: scaleX(0.5);
+
+  animation: dividerReveal 0.9s ease forwards;
+
+  animation-delay: 1.7s;
+}
+
+.sparkle-icon {
+  animation: sparkleRotate 3s linear infinite;
+}
+
+.opening-message {
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation: revealUp 1s ease forwards;
+
+  animation-delay: 1.95s;
+}
+
+
+/* Opening button reveal */
+
+.opening-button-wrapper {
+  opacity: 0;
+
+  transform:
+    translateY(20px)
+    scale(0.95);
+
+  animation:
+    buttonReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  animation-delay: 2.35s;
+}
+
+.opening-button-wrapper button {
+  animation:
+    buttonGlow 3s ease-in-out infinite 3.5s;
+}
+
+.opening-hint {
+  opacity: 0;
+
+  animation: hintReveal 1s ease forwards;
+
+  animation-delay: 2.8s;
+}
+
+.opening-bottom-pulse {
+  opacity: 0;
+
+  animation: pulseReveal 1s ease forwards;
+
+  animation-delay: 3.2s;
+}
+
+.opening-bottom-pulse::before {
+  content: "";
+
+  position: absolute;
+
+  width: 25px;
+  height: 25px;
+
+  border:
+    1px solid rgba(244, 114, 182, 0.2);
+
+  border-radius: 50%;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    bottomRipple 2.5s ease-out infinite;
+}
+
+
+/* ========================================
+   OPENING STARS
+======================================== */
+
+.opening-star {
+  position: absolute;
+
+  color: rgba(244, 114, 182, 0.35);
+
+  font-size: 14px;
+
+  pointer-events: none;
+
+  animation:
+    starFloat 5s ease-in-out infinite;
+}
+
+.star-1 {
+  top: 18%;
+  left: 12%;
+}
+
+.star-2 {
+  top: 27%;
+  right: 14%;
+  animation-delay: 1s;
+}
+
+.star-3 {
+  bottom: 25%;
+  left: 17%;
+  animation-delay: 2s;
+}
+
+.star-4 {
+  bottom: 18%;
+  right: 12%;
+  animation-delay: 3s;
+}
+
+.star-5 {
+  top: 45%;
+  left: 7%;
+
+  font-size: 24px;
+
+  animation-delay: 1.5s;
+}
+
+.star-6 {
+  top: 55%;
+  right: 8%;
+
+  animation-delay: 2.5s;
+}
+
+
+/* ========================================
+   OPENING KEYFRAMES
+======================================== */
+
+@keyframes openingFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.96);
+
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes flowerReveal {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.4)
+      translateY(30px);
+
+    filter: blur(8px);
+  }
+
+  70% {
+    opacity: 1;
+
+    transform:
+      scale(1.08)
+      translateY(-3px);
+
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+@keyframes flowerFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translateY(-9px)
+      rotate(2deg);
+  }
+}
+
+@keyframes flowerGlow {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes ringReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dividerReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sparkleRotate {
+  0% {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(180deg)
+      scale(1.2);
+  }
+
+  100% {
+    transform:
+      rotate(360deg)
+      scale(1);
+  }
+}
+
+@keyframes buttonReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes buttonGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(236, 72, 153, 0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 0 35px rgba(236, 72, 153, 0.16);
+  }
+}
+
+@keyframes hintReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bottomRipple {
+  0% {
+    opacity: 0.6;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.4);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.5);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(0.85);
+
+    opacity: 0.5;
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.15);
+
+    opacity: 0.9;
+  }
+}
+
+@keyframes starFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 0.25;
+  }
+
+  50% {
+    transform:
+      translateY(-18px)
+      rotate(20deg);
+
+    opacity: 0.7;
+  }
+}
+
+
+/* ========================================
+   OPENING EXTRA MESSAGE
+======================================== */
+
+.opening-extra-message {
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  animation:
+    extraMessageReveal 1s ease forwards;
+
+  animation-delay: 2.5s;
+}
+
+@keyframes extraMessageReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+
+/* ========================================
+   OPENING MAIN BUTTON
+======================================== */
+
+.opening-main-button {
+  position: relative;
+
+  overflow: hidden;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 15px 30px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899 0%,
+      #d946ef 50%,
+      #a855f7 100%
+    );
+
+  box-shadow:
+    0 10px 35px rgba(236, 72, 153, 0.3),
+    0 0 30px rgba(168, 85, 247, 0.15);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.opening-main-button:hover {
+  transform:
+    translateY(-3px)
+    scale(1.05);
+
+  box-shadow:
+    0 15px 45px rgba(236, 72, 153, 0.45),
+    0 0 50px rgba(168, 85, 247, 0.25);
+
+  filter: brightness(1.08);
+}
+
+.opening-main-button:active {
+  transform:
+    translateY(0)
+    scale(0.97);
+}
+
+
+/* Shine */
+
+.button-shine {
+  position: absolute;
+
+  top: -60%;
+  left: -80%;
+
+  width: 40%;
+  height: 220%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+
+  transform: rotate(20deg);
+
+  animation:
+    buttonShine 3.5s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -80%;
+  }
+
+  35% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
+}
+
+
+/* Teddy */
+
+.jumping-teddy {
+  display: inline-block;
+
+  transform-origin: bottom center;
+
+  animation:
+    teddyJump 1.4s ease-in-out infinite;
+}
+
+@keyframes teddyJump {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg)
+      scale(1);
+  }
+
+  20% {
+    transform:
+      translateY(-7px)
+      rotate(-6deg)
+      scale(1.05);
+  }
+
+  40% {
+    transform:
+      translateY(0)
+      rotate(4deg)
+      scale(0.96);
+  }
+
+  55% {
+    transform:
+      translateY(-3px)
+      rotate(-3deg)
+      scale(1.02);
+  }
+
+  70% {
+    transform:
+      translateY(0)
+      rotate(0deg)
+      scale(1);
+  }
+}
+
+
+/* ========================================
+   BIRTHDAY PAGE
+======================================== */
+
+.birthday-page {
+  position: relative;
+
+  background:
+    #07040d;
+}
+
+
+/* ========================================
+   BIRTHDAY REAL BACKGROUND IMAGE
+======================================== */
+
+.birthday-bg {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  background-size: cover;
+
+  background-position: center center;
+
+  background-repeat: no-repeat;
+
+  transform: scale(1.01);
+
+  will-change: transform;
+}
+
+
+/* Dark overlay */
+
+.birthday-page > .absolute.inset-0.bg-\[\#07040d\]\/55 {
+  z-index: 1;
+}
+
+
+/* ========================================
+   BIRTHDAY GLOWS
+======================================== */
+
+.birthday-glow {
+  position: absolute;
+
+  z-index: 2;
+
+  border-radius: 999px;
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.birthday-glow-1 {
+  width: 350px;
+  height: 350px;
+
+  background: rgba(236, 72, 153, 0.08);
+
+  top: -100px;
+  left: -100px;
+
+  animation:
+    birthdayGlow 6s ease-in-out infinite;
+}
+
+.birthday-glow-2 {
+  width: 400px;
+  height: 400px;
+
+  background: rgba(168, 85, 247, 0.07);
+
+  right: -130px;
+  bottom: -100px;
+
+  animation:
+    birthdayGlow 7s ease-in-out infinite reverse;
+}
+
+
+/* ========================================
+   BIRTHDAY DATE
+======================================== */
+
+.birthday-date {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  transform: translateY(-10px);
+
+  animation:
+    birthdayReveal 0.8s ease forwards;
+
+  animation-delay: 0.2s;
+}
+
+
+/* ========================================
+   BIRTHDAY CAKE
+======================================== */
+
+.birthday-cake-wrapper {
+  position: relative;
+
+  z-index: 10;
+
+  width: 130px;
+  height: 115px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  animation:
+    cakeReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    cakeFloat 3.5s ease-in-out infinite 1.3s;
+
+  animation-delay:
+    0.45s,
+    1.5s;
+}
+
+.birthday-cake {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 72px;
+
+  filter:
+    drop-shadow(
+      0 10px 25px rgba(236, 72, 153, 0.2)
+    );
+}
+
+.birthday-cake-glow {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+
+  background: rgba(236, 72, 153, 0.18);
+
+  filter: blur(30px);
+
+  animation:
+    cakeGlow 2.5s ease-in-out infinite;
+}
+
+
+/* Cake sparkles */
+
+.cake-spark {
+  position: absolute;
+
+  color: rgba(249, 168, 212, 0.8);
+
+  animation:
+    cakeSparkle 1.8s ease-in-out infinite;
+}
+
+.cake-spark-1 {
+  top: 5px;
+  left: 5px;
+}
+
+.cake-spark-2 {
+  top: 20px;
+  right: 0;
+
+  animation-delay: 0.6s;
+}
+
+.cake-spark-3 {
+  bottom: 10px;
+  right: 15px;
+
+  animation-delay: 1.1s;
+}
+
+
+/* ========================================
+   BIRTHDAY TEXT
+======================================== */
+
+.birthday-small-title {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  animation:
+    birthdayReveal 0.8s ease forwards;
+
+  animation-delay: 0.9s;
+}
+
+.birthday-title {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  transform:
+    translateY(25px)
+    scale(0.96);
+
+  filter: blur(5px);
+
+  animation:
+    birthdayTitleReveal
+    1s cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
+
+  animation-delay: 1.1s;
+}
+
+.birthday-divider {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  transform: scaleX(0.6);
+
+  animation:
+    birthdayDividerReveal 0.8s ease forwards;
+
+  animation-delay: 1.5s;
+}
+
+.birthday-sparkle {
+  animation:
+    sparkleRotate 3s linear infinite;
+}
+
+
+/* ========================================
+   BIRTHDAY CARD
+======================================== */
+
+.birthday-card {
+  position: relative;
+
+  z-index: 10;
+
+  overflow: hidden;
+
+  padding: 28px 24px;
+
+  border-radius: 28px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 5, 18, 0.58),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  opacity: 0;
+
+  transform:
+    translateY(35px)
+    scale(0.97);
+
+  animation:
+    birthdayCardReveal
+    1s cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
+
+  animation-delay: 1.8s;
+}
+
+.birthday-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  top: -60px;
+  right: -40px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(236, 72, 153, 0.08);
+
+  filter: blur(25px);
+}
+
+.birthday-card-shine {
+  position: absolute;
+
+  top: -100%;
+  left: -30%;
+
+  width: 20%;
+  height: 300%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+
+  transform: rotate(25deg);
+
+  animation:
+    birthdayCardShine 5s ease-in-out infinite 3s;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   BIRTHDAY NEXT BUTTON
+======================================== */
+
+.birthday-button-wrapper {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    birthdayReveal 0.9s ease forwards;
+
+  animation-delay: 2.5s;
+}
+
+.birthday-next-button {
+  position: relative;
+
+  overflow: hidden;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 14px 30px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.25);
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899 0%,
+      #d946ef 50%,
+      #8b5cf6 100%
+    );
+
+  box-shadow:
+    0 10px 30px rgba(236, 72, 153, 0.35),
+    0 0 25px rgba(168, 85, 247, 0.2);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.birthday-next-button:hover {
+  transform:
+    translateY(-3px)
+    scale(1.06);
+
+  box-shadow:
+    0 15px 45px rgba(236, 72, 153, 0.5),
+    0 0 40px rgba(168, 85, 247, 0.35);
+
+  filter: brightness(1.1);
+}
+
+.birthday-next-button:active {
+  transform: scale(0.96);
+}
+
+
+/* Button shine */
+
+.birthday-button-shine {
+  position: absolute;
+
+  top: -60%;
+  left: -80%;
+
+  width: 35%;
+  height: 220%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+
+  transform: rotate(20deg);
+
+  animation:
+    birthdayButtonShine
+    3.5s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes birthdayButtonShine {
+  0% {
+    left: -80%;
+  }
+
+  35% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
+}
+
+
+.birthday-hint {
+  position: relative;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  animation:
+    birthdayReveal 1s ease forwards;
+
+  animation-delay: 2.9s;
+}
+
+
+/* ========================================
+   BIRTHDAY PARTICLES
+======================================== */
+
+.birthday-particle {
+  position: absolute;
+
+  z-index: 5;
+
+  color: rgba(244, 114, 182, 0.35);
+
+  pointer-events: none;
+
+  animation:
+    birthdayParticleFloat 5s ease-in-out infinite;
+}
+
+.bp-1 {
+  top: 15%;
+  left: 10%;
+}
+
+.bp-2 {
+  top: 28%;
+  right: 12%;
+
+  animation-delay: 1s;
+}
+
+.bp-3 {
+  top: 60%;
+  left: 7%;
+
+  font-size: 18px;
+
+  opacity: 0.3;
+
+  animation-delay: 2s;
+}
+
+.bp-4 {
+  bottom: 15%;
+  right: 10%;
+
+  animation-delay: 1.5s;
+}
+
+.bp-5 {
+  bottom: 30%;
+  left: 15%;
+
+  animation-delay: 3s;
+}
+
+.bp-6 {
+  top: 48%;
+  right: 7%;
+
+  animation-delay: 2.5s;
+}
+
+
+/* ========================================
+   BIRTHDAY KEYFRAMES
+======================================== */
+
+@keyframes birthdayReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes birthdayTitleReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.96);
+
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes cakeReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.5);
+
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes cakeFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotate(2deg);
+  }
+}
+
+@keyframes cakeGlow {
+  0%,
+  100% {
+    opacity: 0.45;
+
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15);
+  }
+}
+
+@keyframes cakeSparkle {
+  0%,
+  100% {
+    opacity: 0.2;
+
+    transform:
+      scale(0.7)
+      rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.2)
+      rotate(180deg);
+  }
+}
+
+@keyframes birthdayDividerReveal {
+  from {
+    opacity: 0;
+
+    transform: scaleX(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+}
+
+@keyframes birthdayCardReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(35px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes birthdayCardShine {
+  0% {
+    left: -30%;
+  }
+
+  30% {
+    left: 130%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}
+
+@keyframes birthdayGlow {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes birthdayParticleFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 0.25;
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      rotate(12deg);
+
+    opacity: 0.65;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 640px) {
+
+  .opening-glow {
+    width: 300px;
+    height: 300px;
+  }
+
+  .opening-star {
+    font-size: 11px;
+  }
+
+  .star-5,
+  .star-6 {
+    display: none;
+  }
+
+  .opening-flower {
+    margin-bottom: 5px;
+  }
+
+
+  /* Memories */
+
   .memory-card-inner {
     padding: 7px 7px 12px;
   }
 
   .memory-card:hover .memory-card-inner {
-    transform: rotate(0deg) scale(1.04) translateY(-7px);
+    transform:
+      rotate(0deg)
+      scale(1.04)
+      translateY(-7px);
   }
 
   .memory-card-inner p {
     font-size: 11px;
     line-height: 1.4;
   }
+
+
+  /* Birthday */
+
+  .birthday-page {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .birthday-bg {
+    background-position: center center;
+  }
+
+  .birthday-cake-wrapper {
+    width: 100px;
+    height: 90px;
+  }
+
+  .birthday-cake {
+    font-size: 58px;
+  }
+
+  .birthday-card {
+    padding: 24px 18px;
+  }
+
+  .birthday-particle {
+    opacity: 0.25;
+  }
+
+  .birthday-next-button {
+    padding: 13px 24px;
+  }
 }
 
 
-/* Reduced motion */
+/* ========================================
+   REDUCED MOTION
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
+  .floating-petal {
+    animation: none;
+    display: none;
+  }
+
   .memory-card,
   .memory-card:nth-child(1),
   .memory-card:nth-child(2),
@@ -338,5 +1896,58 @@ body {
   .memory-card:nth-child(6) {
     animation: none;
     opacity: 1;
+  }
+
+  .opening-section,
+  .opening-label,
+  .opening-line,
+  .opening-flower,
+  .flower-ring,
+  .opening-hey,
+  .opening-title,
+  .opening-divider,
+  .opening-message,
+  .opening-button-wrapper,
+  .opening-hint,
+  .opening-bottom-pulse {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+  }
+
+  .opening-star,
+  .flower-glow,
+  .sparkle-icon {
+    animation: none;
+  }
+
+  .birthday-date,
+  .birthday-cake-wrapper,
+  .birthday-small-title,
+  .birthday-title,
+  .birthday-divider,
+  .birthday-card,
+  .birthday-button-wrapper,
+  .birthday-hint {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+  .birthday-particle,
+  .birthday-cake,
+  .birthday-cake-glow,
+  .cake-spark,
+  .birthday-card-shine,
+  .birthday-button-shine {
+    animation: none;
   }
 }
