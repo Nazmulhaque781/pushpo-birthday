@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #090611;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #f9a8d4,
+    #e9d5ff,
+    #fda4af
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes letterOpen {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.letter-open {
+  animation: letterOpen 0.8s ease forwards;
+}
+@keyframes finalReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  60% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.final-reveal {
+  animation: finalReveal 1s ease forwards;
+}
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.7s ease;
+}
+.floating-petal {
+  position: absolute;
+  top: -40px;
+  font-size: 18px;
+  opacity: 0.45;
+  animation-name: fallPetal;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fallPetal {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(25px) rotate(180deg);
+  }
+
+  90% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(-30px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-petal {
+    animation: none;
+    display: none;
+  }
+}
+/* ============================= */
+/* Memories Gallery              */
+/* ============================= */
+
+.memory-card {
+  position: relative;
+  opacity: 0;
+  animation: memoryAppear 0.9s ease forwards;
+  transition:
+    transform 0.5s ease,
+    z-index 0.3s ease;
+}
+
+.memory-card-inner {
+  position: relative;
+  background: #f8f5f0;
+  padding: 10px 10px 16px;
+  border-radius: 4px;
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.35),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* Floating movement */
+
+.memory-card:nth-child(1) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat1 5s ease-in-out infinite 1s;
+}
+
+.memory-card:nth-child(2) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat2 6s ease-in-out infinite 1.2s;
+}
+
+.memory-card:nth-child(3) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat3 5.5s ease-in-out infinite 1.4s;
+}
+
+.memory-card:nth-child(4) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat2 6.5s ease-in-out infinite 1.6s;
+}
+
+.memory-card:nth-child(5) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat1 5.8s ease-in-out infinite 1.8s;
+}
+
+.memory-card:nth-child(6) {
+  animation:
+    memoryAppear 0.9s ease forwards,
+    memoryFloat3 6.2s ease-in-out infinite 2s;
+}
+
+
+/* Hover */
+
+.memory-card:hover {
+  z-index: 20;
+}
+
+.memory-card:hover .memory-card-inner {
+  transform: rotate(0deg) scale(1.08) translateY(-12px);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.5),
+    0 0 35px rgba(244, 114, 182, 0.12);
+}
+
+.memory-card:hover .memory-image {
+  transform: scale(1.08);
+}
+
+.memory-image {
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* Appear animation */
+
+@keyframes memoryAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8) rotate(0deg);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Floating animations */
+
+@keyframes memoryFloat1 {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes memoryFloat2 {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 4px -10px;
+  }
+}
+
+@keyframes memoryFloat3 {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: -4px -7px;
+  }
+}
+
+
+/* Next button */
+
+.memory-next-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.memory-next-button:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(244, 114, 182, 0.12);
+}
+
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .memory-card-inner {
+    padding: 7px 7px 12px;
+  }
+
+  .memory-card:hover .memory-card-inner {
+    transform: rotate(0deg) scale(1.04) translateY(-7px);
+  }
+
+  .memory-card-inner p {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-card,
+  .memory-card:nth-child(1),
+  .memory-card:nth-child(2),
+  .memory-card:nth-child(3),
+  .memory-card:nth-child(4),
+  .memory-card:nth-child(5),
+  .memory-card:nth-child(6) {
+    animation: none;
+    opacity: 1;
+  }
+}
