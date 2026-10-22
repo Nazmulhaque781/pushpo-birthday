@@ -2,7 +2,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const Opening = ({ onOpen }) => {
   return (
-    <section className="opening-section relative min-h-screen overflow-hidden flex items-center justify-center px-5">
+    // <section className="opening-section relative min-h-screen overflow-hidden flex items-center justify-center px-5">
+    <section className="opening-section relative min-h-screen overflow-hidden flex items-center justify-center px-5 py-12 md:py-16">
       {/* =========================
           BACKGROUND IMAGE
       ========================== */}
